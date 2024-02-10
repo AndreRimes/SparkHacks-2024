@@ -10,6 +10,7 @@ export default function Profile({ params }) {
     const [posts, setPosts] = useState([])
     const { getPostByUser, getUserById } = useUser()
 
+
     useEffect(() => {
         async function fetchData() {
             const user = await getUserById(params.id);

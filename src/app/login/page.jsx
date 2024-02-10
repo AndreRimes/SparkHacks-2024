@@ -15,6 +15,7 @@ export default function Login() {
     const { login } = useAuth();
     const {fetchData} = useUser();
     const router = useRouter();
+    
 
     const handleLogin = async () => {
         const email = emailRef.current.value;

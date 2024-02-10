@@ -42,9 +42,7 @@ export default function Post({ post }) {
             </div>
             <Image src={getUrl(post)} alt="photo" width={200} height={200} className="w-2/3 h-2/3" />
             <p className="w-2/3 h-1/3 py-1 max-h-[40%] overflow-hidden">
-                <b>{post.user.username}</b>: {post?.caption} Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos similique
-                consequatur tenetur recusandae sint optio error dolores. Eos consectetur nihil officia. Animi architecto
-                voluptates, magni non ea necessitatibus ullam consequuntur?
+                <b>{post.user.username}</b>: {post?.caption}
             </p>
         </div>
     );

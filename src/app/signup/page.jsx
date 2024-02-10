@@ -1,19 +1,17 @@
-"use client";
+"use client"
 import Image from "next/image";
 import plantImage from "../../../public/plant.png";
 import Link from "next/link";
 import { useState, useRef } from "react";
 import useAuth from "@/Domain/hooks/useAuth";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation'
 
 export default function SignUp() {
-    const router = useRouter();
+    const router = useRouter()
     const { signup } = useAuth();
     const emailRef = useRef(null);
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
-
-    const [error, setError] = useState("");
 
     async function handleClick() {
         const data = {
@@ -23,31 +21,20 @@ export default function SignUp() {
             "password": passwordRef.current.value,
             "passwordConfirm": passwordRef.current.value,
             "name": usernameRef.current.value,
-            "following": [],
-            "streak": 0,
-            "bio": "DEFAULT",
-            "checkToday": false,
         };
-
         try {
             const res = await signup(data);
             if (res) {
-                router.push("/login");
-            } else {
-                setError("Username already exists. Please choose a different one.");
+                router.push("/login")
             }
         } catch (e) {
-            setError("Username already exists. Please choose a different one.");
+            console.log("ERROR", e)
         }
     }
-
-
 
     return (
         <div className="w-screen h-screen flex items-center justify-center">
             <div className="w-1/3 border-4 rounded-lg h-4/5 flex flex-col items-center justify-evenly p-5">
-                {error === " " && <div className="alert alert-error font-bold mb-4">{error}</div>}
-
                 <h1 className="text-lg font-bold">Sign Up</h1>
                 <Image src={plantImage} alt="plant" width={90} height={90} className="w-[7vw] h-[7vw]" />
 
@@ -72,7 +59,7 @@ export default function SignUp() {
                     />
                 </div>
                 <Link className="text-sm pb-2" href={"/login"}>
-                    Already have an account?
+                    Already have an account?{" "}
                 </Link>
 
                 <button className="btn btn-primary w-2/3 hover:scale-110" onClick={handleClick}>
