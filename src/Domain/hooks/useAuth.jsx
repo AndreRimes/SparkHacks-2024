@@ -24,11 +24,13 @@ export default function useAuth() {
     }
 
     async function signup(data) {
+        console.log(data)
         try {
             const user = await pb.collection('users').create(data);
-            return user
+            console.log(user)
+            return true
         } catch (e) {
-            return e
+            return false
         }
     }
 
